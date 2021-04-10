@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/starting_nav"
+    app:startDestination="@id/splahFragment">
+
+    <fragment
+        android:id="@+id/splahFragment"
+        android:name="com.sedra.sis.SplahFragment"
+        android:label="fragment_splah"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splahFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.sedra.sis.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpPersonalDataFragment"
+            app:destination="@id/signUpPersonalDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpPersonalDataFragment"
+        android:name="com.sedra.sis.SignUpPersonalDataFragment"
+        android:label="fragment_sign_up_personal_data"
+        tools:layout="@layout/fragment_sign_up_personal_data" >
+        <action
+            android:id="@+id/action_signUpPersonalDataFragment_to_signUpLoginDataFragment"
+            app:destination="@id/signUpLoginDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpLoginDataFragment"
+        android:name="com.sedra.sis.SignUpLoginDataFragment"
+        android:label="fragment_sign_up_login_data"
+        tools:layout="@layout/fragment_sign_up_login_data" />
+</navigation>
