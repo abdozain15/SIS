@@ -1,14 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SignUpPersonalDataFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".view.auth.signup.SignUpPersonalDataFragment">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bk_img"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/include_signup_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/shape_blue_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    style="@style/signUpHeaders"
+                    android:text="select gender" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    style="@style/signUpHeaders"
+                    android:text="@string/enter_your_age" />
+
+                <EditText
+                    android:id="@+id/editTextNumber"
+                    style="@style/signUpEt"
+                    android:hint=""
+                    android:inputType="number"
+                    android:labelFor="@id/textView8" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    style="@style/signUpHeaders"
+                    android:text="Enter your name" />
+
+                <EditText
+                    android:id="@+id/editTextNumber2"
+                    style="@style/signUpEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=""
+                    android:inputType="number"
+                    android:labelFor="@id/textView8" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    style="@style/signUpHeaders"
+                    android:text="Enter your hight in CM" />
+
+                <EditText
+                    android:id="@+id/editTextNumber3"
+                    style="@style/signUpEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=""
+                    android:inputType="number"
+                    android:labelFor="@id/textView8" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    style="@style/signUpHeaders"
+                    android:text="Enter your weight in KG" />
+
+                <EditText
+                    android:id="@+id/editTextNumber4"
+                    style="@style/signUpEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=""
+                    android:inputType="number"
+                    android:labelFor="@id/textView8" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nextSignUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/white"
+                    android:padding="16dp"
+                    android:text="NEXT"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

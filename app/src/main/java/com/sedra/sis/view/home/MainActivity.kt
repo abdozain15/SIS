@@ -1,7 +1,8 @@
-package com.sedra.sis
+package com.sedra.sis.view.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.sedra.sis.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

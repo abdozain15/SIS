@@ -9,5 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="darkBlue">#1b75bb</color>
     <color name="darkGreen">#209b06</color>
+    <color name="greenText">#5da844</color>
+    <color name="purpleText">#4a4a70</color>
     <color name="lightBlue">#70b5eb</color>
+    <color name="textRed">#bc0000</color>
+    <color name="grey_bk">#2e2e2e</color>
+    <color name="lightGreen">#5fcda4</color>
+    <color name="lightYellow">#eac772</color>
+    <color name="lightRed">#ea7288</color>
 </resources>
