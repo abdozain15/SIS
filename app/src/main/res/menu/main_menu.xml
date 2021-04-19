@@ -2,9 +2,12 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Search" />
-    <item android:title="Shop" />
-    <item android:title="Home" />
+    <item android:title="Search"
+        android:icon="@drawable/ic_search_white"/>
+    <item android:title="Shop"
+        android:icon="@drawable/ic_shopping_cart"/>
+    <item android:title="Home"
+        android:icon="@drawable/ic_home"/>
     <item android:title="Workout" />
     <item android:title="Profile" />
 </menu>
