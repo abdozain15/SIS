@@ -1,12 +1,26 @@
 package com.sedra.sis.view.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sedra.sis.R
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setUpNavigation()
+    }
+
+    fun setUpNavigation() {
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView2)
+        val navHostFragment = supportFragmentManager
+                .findFragmentById(R.id.fragment2) as NavHostFragment?
+        NavigationUI.setupWithNavController(bottomNavigationView,
+                navHostFragment!!.navController)
     }
 }
