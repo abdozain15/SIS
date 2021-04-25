@@ -79,10 +79,10 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/white_et_background"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextTextEmailAddress"
+            app:layout_constraintBottom_toBottomOf="@+id/loginEmail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/editTextTextEmailAddress" />
+            app:layout_constraintTop_toTopOf="@+id/loginEmail" />
 
         <View
             android:id="@+id/passwordView"
@@ -91,13 +91,13 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/white_et_background"
-            app:layout_constraintBottom_toBottomOf="@+id/passwordEt"
+            app:layout_constraintBottom_toBottomOf="@+id/loginPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/passwordEt" />
+            app:layout_constraintTop_toTopOf="@+id/loginPassword" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/loginEmail"
             style="@style/loginEtStyle"
             android:layout_width="0dp"
             android:layout_marginTop="16dp"
@@ -112,7 +112,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <EditText
-            android:id="@+id/passwordEt"
+            android:id="@+id/loginPassword"
             style="@style/loginEtStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
             android:src="@drawable/ic_email"
             app:layout_constraintBottom_toBottomOf="@+id/emailView"
             app:layout_constraintStart_toStartOf="@+id/emailView"
-            app:layout_constraintTop_toTopOf="@+id/editTextTextEmailAddress" />
+            app:layout_constraintTop_toTopOf="@+id/loginEmail" />
 
         <ImageView
             android:id="@+id/imageView5"
