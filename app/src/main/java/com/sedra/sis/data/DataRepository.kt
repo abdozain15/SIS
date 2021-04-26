@@ -8,12 +8,15 @@ class DataRepository @Inject constructor(
 ) {
 
     suspend fun login(email: String, password: String) =
-        service.login(email, password)
+            service.login(email, password)
 
 
     suspend fun register(
-        email: String, password: String, name: String, gender: String, age: Int,
-        height: Int, weight: Int
+            email: String, password: String, name: String, gender: String, age: Int,
+            height: Int, weight: Int
     ) =
-        service.register(email, password, name, gender, age, height, weight)
+            service.register(email, password, name, gender, age, height, weight)
+
+    suspend fun getWorkouts(auth: String) =
+            service.getWorkouts(auth)
 }
