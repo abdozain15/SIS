@@ -28,7 +28,7 @@ interface ApiService {
         @Field("name") name: String,
         @Field("gender") gender: String,
         @Field("age") age: Int,
-        @Field("age") age: Int,
-        @Field("age") age: Int,
+        @Field("height") height: Int,
+        @Field("weight") weight: Int,
     ): BaseResponse<User>
 }

@@ -61,7 +61,7 @@
                     android:text="@string/enter_your_age" />
 
                 <EditText
-                    android:id="@+id/editTextNumber"
+                    android:id="@+id/registerAge"
                     style="@style/signUpEt"
                     android:hint=""
                     android:inputType="number"
@@ -73,12 +73,12 @@
                     android:text="Enter your name" />
 
                 <EditText
-                    android:id="@+id/editTextNumber2"
+                    android:id="@+id/registerName"
                     style="@style/signUpEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint=""
-                    android:inputType="number"
+                    android:inputType="textPersonName"
                     android:labelFor="@id/textView8" />
 
                 <TextView
@@ -87,7 +87,7 @@
                     android:text="Enter your hight in CM" />
 
                 <EditText
-                    android:id="@+id/editTextNumber3"
+                    android:id="@+id/registerHeight"
                     style="@style/signUpEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                     android:text="Enter your weight in KG" />
 
                 <EditText
-                    android:id="@+id/editTextNumber4"
+                    android:id="@+id/registerWeight"
                     style="@style/signUpEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
