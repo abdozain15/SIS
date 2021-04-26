@@ -26,5 +26,13 @@
     <fragment
         android:id="@+id/workoutFragment"
         android:name="com.sedra.sis.view.workout.WorkoutFragment"
-        android:label="WorkoutFragment" />
+        android:label="WorkoutFragment">
+        <action
+            android:id="@+id/action_workoutFragment_to_shoppingFragment"
+            app:destination="@id/shoppingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingFragment"
+        android:name="com.sedra.sis.view.shopping.ShoppingFragment"
+        android:label="ShoppingFragment" />
 </navigation>

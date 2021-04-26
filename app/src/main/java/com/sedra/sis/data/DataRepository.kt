@@ -19,4 +19,7 @@ class DataRepository @Inject constructor(
 
     suspend fun getWorkouts(auth: String) =
             service.getWorkouts(auth)
+
+    suspend fun getShoppingDepartments(auth: String) =
+            service.getShoppingDepartments(auth)
 }

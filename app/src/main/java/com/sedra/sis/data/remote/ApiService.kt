@@ -1,6 +1,7 @@
 package com.sedra.sis.data.remote
 
 import com.sedra.sis.data.model.BaseResponse
+import com.sedra.sis.data.model.Department
 import com.sedra.sis.data.model.User
 import com.sedra.sis.data.model.Workout
 import retrofit2.http.Field
@@ -38,4 +39,10 @@ interface ApiService {
     suspend fun getWorkouts(
             @Header("Authorization") authorization: String
     ): BaseResponse<List<Workout>>
+
+
+    @POST("/sisapp/api/department")
+    suspend fun getShoppingDepartments(
+            @Header("Authorization") authorization: String
+    ): BaseResponse<List<Department>>
 }
