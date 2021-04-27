@@ -12,14 +12,20 @@ class DataRepository @Inject constructor(
 
 
     suspend fun register(
-            email: String, password: String, name: String, gender: String, age: Int,
-            height: Int, weight: Int
+        email: String, password: String, name: String, gender: String, age: Int,
+        height: Int, weight: Int
     ) =
-            service.register(email, password, name, gender, age, height, weight)
+        service.register(email, password, name, gender, age, height, weight)
 
     suspend fun getWorkouts(auth: String) =
-            service.getWorkouts(auth)
+        service.getWorkouts(auth)
 
     suspend fun getShoppingDepartments(auth: String) =
-            service.getShoppingDepartments(auth)
+        service.getShoppingDepartments(auth)
+
+    suspend fun getProduct(auth: String, id: Int) =
+        service.getProduct(auth, id)
+
+    suspend fun searchProducts(auth: String, name: String) =
+        service.searchProducts(auth, name)
 }

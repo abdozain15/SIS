@@ -34,5 +34,13 @@
     <fragment
         android:id="@+id/shoppingFragment"
         android:name="com.sedra.sis.view.shopping.ShoppingFragment"
-        android:label="ShoppingFragment" />
+        android:label="ShoppingFragment">
+        <action
+            android:id="@+id/action_shoppingFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.sedra.sis.view.profile.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>
