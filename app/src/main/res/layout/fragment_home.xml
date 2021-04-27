@@ -125,6 +125,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
         <include
+            android:id="@+id/includeTimer"
             layout="@layout/include_timer_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
