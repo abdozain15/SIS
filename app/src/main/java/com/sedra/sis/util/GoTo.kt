@@ -5,11 +5,18 @@ import android.content.Intent
 import com.sedra.sis.data.model.Product
 import com.sedra.sis.view.home.MainActivity
 import com.sedra.sis.view.productdetails.ProductDetailsActivity
+import com.sedra.sis.view.starting.StartingActivity
 
 object GoTo {
 
     fun mainActivity(context: Context) {
         val intent = Intent(context, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        context.startActivity(intent)
+    }
+
+    fun startingActivity(context: Context) {
+        val intent = Intent(context, StartingActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         context.startActivity(intent)
     }

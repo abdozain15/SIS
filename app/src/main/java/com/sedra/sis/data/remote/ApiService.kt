@@ -32,6 +32,17 @@ interface ApiService {
         @Field("weight") weight: Int,
     ): BaseResponse<User>
 
+    @POST("/sisapp/api/editProfile")
+    @FormUrlEncoded
+    suspend fun editProfile(
+        @Header("Authorization") authorization: String,
+        @Field("name") name: String,
+        @Field("gender") gender: String,
+        @Field("age") age: Int,
+        @Field("height") height: Int,
+        @Field("weight") weight: Int,
+    ): BaseResponse<Int>
+
     @POST("/sisapp/api/workout")
     suspend fun getWorkouts(
         @Header("Authorization") authorization: String
