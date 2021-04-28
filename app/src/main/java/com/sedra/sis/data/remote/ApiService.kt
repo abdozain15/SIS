@@ -61,6 +61,15 @@ interface ApiService {
         @Field("id") id: Int,
     ): BaseResponse<Product>
 
+
+    @POST("/sisapp/api/askQuestion")
+    @FormUrlEncoded
+    suspend fun askQuestions(
+        @Header("Authorization") authorization: String,
+        @Field("user_id") id: Int,
+        @Field("req_body") body: String,
+    ): BaseResponse<Product>
+
     @POST("/sisapp/api/search")
     @FormUrlEncoded
     suspend fun searchProducts(

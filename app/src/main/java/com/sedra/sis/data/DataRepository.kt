@@ -35,4 +35,7 @@ class DataRepository @Inject constructor(
 
     suspend fun searchProducts(auth: String, name: String) =
         service.searchProducts(auth, name)
+
+    suspend fun askQuestions(auth: String, id: Int, body: String) =
+        service.askQuestions(auth, id, body)
 }

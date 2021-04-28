@@ -2,13 +2,16 @@ package com.sedra.sis.view.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sedra.sis.data.remote.ApiService
+import androidx.lifecycle.liveData
+import com.sedra.sis.data.DataRepository
+import com.sedra.sis.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-        val apiService: ApiService
+    val repository: DataRepository
 ) : ViewModel() {
 
     val running = MutableLiveData<Boolean>()
@@ -22,8 +25,20 @@ class HomeViewModel @Inject constructor(
         running.postValue(true)
         seconds = 0
     }
-    fun pauseRunning(){
+
+    fun pauseRunning() {
         running.postValue(true)
         seconds = 0
     }
+
+
+    fun askQuestion(auth: String, id: Int, body: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = repository.askQuestions(auth, id, body)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = "Mac Or Code are wrong"))
+        }
+    }
+
 }
