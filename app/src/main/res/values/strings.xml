@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SIS</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="forgot_password"><u>Forgot password?</u></string>
     <string name="enter_your_age">Enter your age</string>
+    <string name="new_price">%1$d EGP</string>
+    <string name="old_price">%1$d EGP</string>
 </resources>

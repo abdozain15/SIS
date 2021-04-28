@@ -8,8 +8,12 @@ import com.bumptech.glide.Glide
 import com.sedra.sis.R
 import com.sedra.sis.data.model.Product
 import com.sedra.sis.databinding.ListItemShopBinding
+import com.sedra.sis.util.GoTo
+import com.sedra.sis.util.OnProductClicked
 
-class ProductAdapter : ListAdapter<Product, CustomViewHolder>(Companion) {
+class ProductAdapter(
+    val listener: OnProductClicked? = null
+) : ListAdapter<Product, CustomViewHolder>(Companion) {
 
     companion object : DiffUtil.ItemCallback<Product>() {
         override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
@@ -39,6 +43,13 @@ class ProductAdapter : ListAdapter<Product, CustomViewHolder>(Companion) {
             textView30.text = currentProduct.name
             salePrice.text = currentProduct.sale_price.toString()
             price.text = currentProduct.price.toString()
+            root.setOnClickListener {
+                if (listener != null)
+                    listener.onClick(it, currentProduct)
+                else
+                    GoTo.productDetails(itemBinding.root.context, currentProduct)
+
+            }
         }
         itemBinding.executePendingBindings()
     }

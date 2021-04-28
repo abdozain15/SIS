@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sedra.sis.R
+import com.sedra.sis.data.model.Product
 import com.sedra.sis.data.model.User
 import com.sedra.sis.databinding.FragmentSearchBinding
+import com.sedra.sis.util.GoTo
+import com.sedra.sis.util.OnProductClicked
 import com.sedra.sis.util.PREF_PARENT_USER
 import com.sedra.sis.util.Status.*
 import com.sedra.sis.util.getUserFromString
@@ -38,7 +41,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private fun setUpUi() {
         binding?.apply {
-            productAdapter = ProductAdapter()
+            productAdapter = ProductAdapter(object : OnProductClicked {
+                override fun onClick(view: View, product: Product) {
+                    GoTo.productDetails(requireContext(), product)
+                }
+            })
             searchButton.setOnClickListener {
                 val searchQuery = searchEt.text.toString()
                 if (searchQuery.isEmpty()) return@setOnClickListener

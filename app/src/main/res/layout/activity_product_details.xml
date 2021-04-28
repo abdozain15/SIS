@@ -45,7 +45,8 @@
             android:layout_marginTop="16dp"
             android:text="Shop"
             android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/imageView18"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/back"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -54,7 +55,6 @@
             android:layout_height="wrap_content"
             android:text="@{product.name}"
             android:textColor="@color/black"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/textView28"
             app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
@@ -65,12 +65,12 @@
             android:layout_marginTop="32dp"
             android:text="@{product.name}"
             android:textColor="@color/darkBlue"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/imageView16"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/productImageDetails"
             app:layout_constraintTop_toBottomOf="@+id/productName" />
 
         <ImageView
-            android:id="@+id/imageView16"
+            android:id="@+id/productImageDetails"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -82,7 +82,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView18"
+            android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
@@ -97,20 +97,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{product.price}"
+            android:text="@{String.format(@string/new_price, product.sale_price)}"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/imageView16"
-            app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/productImageDetails"
+            app:layout_constraintTop_toBottomOf="@+id/productImageDetails" />
 
         <TextView
             android:id="@+id/textView40"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="@{product.sale_price}"
+            android:layout_marginStart="24dp"
+            android:text="@{String.format(@string/old_price, product.price)}"
             android:textColor="@color/textRed"
             android:textStyle="bold"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView39"
             app:layout_constraintStart_toEndOf="@+id/textView39" />
 
@@ -136,7 +138,8 @@
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/imageView16"
+            android:minLines="4"
+            app:layout_constraintEnd_toEndOf="@+id/productImageDetails"
             app:layout_constraintStart_toStartOf="@+id/textView41"
             app:layout_constraintTop_toBottomOf="@+id/textView41" />
 
