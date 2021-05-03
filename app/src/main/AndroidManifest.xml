@@ -3,6 +3,7 @@
     package="com.sedra.sis">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".SisApplication"
@@ -13,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SIS"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.productdetails.ProductDetailsActivity"></activity>
+        <activity android:name=".view.cart.CartActivity" />
+        <activity android:name=".view.productdetails.ProductDetailsActivity" />
         <activity android:name=".view.home.MainActivity" />
         <activity android:name=".view.starting.StartingActivity">
             <intent-filter>

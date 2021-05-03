@@ -1,5 +1,6 @@
 package com.sedra.sis.view.home
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
@@ -11,6 +12,7 @@ import com.sedra.sis.data.model.User
 import com.sedra.sis.databinding.FragmentHomeBinding
 import com.sedra.sis.util.PREF_PARENT_USER
 import com.sedra.sis.util.getUserFromString
+import com.sedra.sis.view.cart.CartActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 import javax.inject.Inject
@@ -35,18 +37,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding = FragmentHomeBinding.bind(view)
         user = getUserFromString(preferences.getString(PREF_PARENT_USER, "") ?: "")
         binding!!.userName.text = user?.name
-        viewModel.running.observe(viewLifecycleOwner) {
-            if (it) {
-                startCounter()
-            } else {
-                stopCounter()
-            }
-        }
+//        viewModel.running.observe(viewLifecycleOwner) {
+//            if (it) {
+//                startCounter()
+//            } else {
+//                stopCounter()
+//            }
+//        }
         if (savedInstanceState != null) {
-
-            // Get the previous state of the stopwatch
-            // if the activity has been
-            // destroyed and recreated.
             seconds = savedInstanceState
                 .getInt("seconds");
             running = savedInstanceState
@@ -64,6 +62,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
             includeTimer.pauseTimer.setOnClickListener {
                 onCLickPause()
+            }
+            goToCart.setOnClickListener {
+                startActivity(Intent(requireContext(), CartActivity::class.java))
             }
         }
     }

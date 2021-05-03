@@ -1,6 +1,9 @@
 package com.sedra.sis.data
 
+import com.sedra.sis.data.model.CartRequest
 import com.sedra.sis.data.remote.ApiService
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 class DataRepository @Inject constructor(
@@ -19,10 +22,10 @@ class DataRepository @Inject constructor(
 
 
     suspend fun editProfile(
-        auth: String, name: String, gender: String, age: Int,
+        auth: String, id: Int, name: String, gender: String, age: Int,
         height: Int, weight: Int
     ) =
-        service.editProfile(auth, name, gender, age, height, weight)
+        service.editProfile(auth, id, name, gender, age, height, weight)
 
     suspend fun getWorkouts(auth: String) =
         service.getWorkouts(auth)
@@ -38,4 +41,14 @@ class DataRepository @Inject constructor(
 
     suspend fun askQuestions(auth: String, id: Int, body: String) =
         service.askQuestions(auth, id, body)
+
+
+    suspend fun updateImage(auth: String, id: RequestBody, body: MultipartBody.Part) =
+        service.updateImage(auth, id, body)
+
+    suspend fun sendOpinion(auth: String, id: Int, body: String) =
+        service.sendOpinion(auth, id, body)
+
+    suspend fun sendOrder(auth: String, request: CartRequest) =
+        service.sendOrder(auth, request)
 }

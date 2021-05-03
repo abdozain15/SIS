@@ -1,10 +1,12 @@
 package com.sedra.sis.view.profile
 
+import android.app.Dialog
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,6 +14,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import com.sedra.sis.R
 import com.sedra.sis.data.model.User
+import com.sedra.sis.databinding.DialogComplaintsBinding
 import com.sedra.sis.databinding.DialogEditProfileBinding
 import com.sedra.sis.databinding.FragmentProfileBinding
 import com.sedra.sis.util.GoTo
@@ -42,6 +45,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding?.apply {
             editProfile.setOnClickListener {
                 openEditDialog()
+            }
+            complaints.setOnClickListener {
+                openComplaintsDialog()
             }
             name.text = currentUser?.name
             logout.setOnClickListener {
@@ -84,6 +90,38 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         dialog.show()
     }
 
+
+    private fun openComplaintsDialog() {
+        val binding: DialogComplaintsBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(
+                context
+            ), R.layout.dialog_complaints, null, false
+        )
+        val dialog = Dialog(requireContext()).apply {
+            setContentView(binding.root)
+            setCancelable(true)
+            setCanceledOnTouchOutside(true)
+        }
+        binding.apply {
+            sendOpinion.setOnClickListener {
+                viewModel.sendOpinion(
+                    "Bearer ${currentUser?.api_token}",
+                    currentUser!!.id,
+                    opinionText.text.toString()
+                ).observe(viewLifecycleOwner) {
+                    dialog.dismiss()
+                }
+            }
+        }
+        dialog.show()
+        val window = dialog.window
+        window?.setLayout(
+            ConstraintLayout.LayoutParams.MATCH_PARENT,
+            ConstraintLayout.LayoutParams.WRAP_CONTENT
+        )
+
+    }
+
     private fun saveUserData(
         name: String,
         age: String,
@@ -93,6 +131,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     ) {
         viewModel.editProfile(
             "Bearer ${currentUser?.api_token}",
+            currentUser?.id ?: 0,
             name,
             gender,
             age.toInt(),
