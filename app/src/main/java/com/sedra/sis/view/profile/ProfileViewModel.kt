@@ -37,7 +37,7 @@ class ProfileViewModel @Inject constructor(
                 )
             )
         } catch (exception: Exception) {
-            emit(Resource.error(data = null, message = "Mac Or Code are wrong"))
+            emit(Resource.error(data = null, message = exception.localizedMessage))
         }
     }
 
@@ -64,7 +64,7 @@ class ProfileViewModel @Inject constructor(
                 MultipartBody.Part.createFormData("image", file.name, requestBody)
             emit(Resource.success(data = repository.updateImage(auth, userId, fileToUpload)))
         } catch (exception: Exception) {
-            emit(Resource.error(data = null, message = "Mac Or Code are wrong"))
+            emit(Resource.error(data = null, message = exception.message.toString()))
         }
     }
 }
