@@ -4,10 +4,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.content.SharedPreferences
-import android.database.Cursor
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
@@ -15,7 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.loader.content.CursorLoader
+import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
@@ -29,7 +26,6 @@ import com.sedra.sis.util.PREF_PARENT_USER
 import com.sedra.sis.util.Status
 import com.sedra.sis.util.getUserFromString
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.File
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -64,6 +60,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             userImage.setOnClickListener {
                 pickImage()
             }
+            Glide.with(requireContext())
+                .load(currentUser?.image)
+                .placeholder(R.drawable.logo)
+                .into(userImage)
         }
     }
 
@@ -79,9 +79,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         resource.data?.let { response ->
-                            Toast.makeText(context, response.msg, Toast.LENGTH_SHORT).show()
-                            if (response.status) {
-                            }
+                            currentUser?.image = response.url
+                            currentUser?.image
+                            Glide.with(requireContext())
+                                .load(response.url)
+                                .placeholder(R.drawable.logo)
+                                .into(binding!!.userImage)
+                            saveUser(currentUser)
                         }
                     }
                     Status.ERROR -> {
@@ -97,8 +101,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun pickImage() {
-//        val gallery = Intent(Intent.ACTION_OPEN_DOCUMENT, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-//        resultLauncher?.launch(gallery)
         ImagePicker.with(this)
             .crop()                    //Crop image(Optional), Check Customization for more option
             .compress(1024)            //Final image size will be less than 1 MB(Optional)
@@ -108,13 +110,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             )    //Final image resolution will be less than 1080 x 1080(Optional)
             .start { resultCode, data ->
                 if (resultCode == Activity.RESULT_OK) {
-                    //Image Uri will not be null for RESULT_OK
                     val fileUri = data?.data
                     if (data != null) updateImage(data)
-                    val file: File? = ImagePicker.getFile(data)
-
-                    //You can also get File Path from intent
-                    val filePath: String? = ImagePicker.getFilePath(data)
                 } else if (resultCode == ImagePicker.RESULT_ERROR) {
                     Toast.makeText(context, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
                 } else {
@@ -248,14 +245,4 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
 
-    private fun getRealPathFromURI(contentUri: Uri): String {
-        val proj = arrayOf(MediaStore.Images.Media.DATA)
-        val loader = CursorLoader(requireContext(), contentUri, proj, null, null, null)
-        val cursor: Cursor = loader.loadInBackground()!!
-        val column_index: Int = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-        cursor.moveToFirst()
-        val result: String = cursor.getString(column_index)
-        cursor.close()
-        return result
-    }
 }

@@ -13,5 +13,6 @@ data class User(
     var name: String,
     val updated_at: String,
     val user_name: String,
+    var image: String?,
     var weight: Int
 )

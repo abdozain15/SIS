@@ -91,7 +91,7 @@ interface ApiService {
         @Header("Authorization") authorization: String,
         @Part("id") id: RequestBody,
         @Part image: MultipartBody.Part,
-    ): BaseResponse<List<Product>>
+    ): UpdateImageResponse
 
 
     @POST("/sisapp/api/orders")
