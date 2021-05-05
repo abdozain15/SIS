@@ -51,42 +51,42 @@
             android:background="@drawable/shape_btn_background"
             android:backgroundTint="@color/grey_bk"
             app:layout_constraintBottom_toBottomOf="@+id/textView21"
-            app:layout_constraintEnd_toEndOf="@+id/textView19"
-            app:layout_constraintStart_toStartOf="@+id/textView17"
-            app:layout_constraintTop_toTopOf="@+id/textView18" />
+            app:layout_constraintEnd_toEndOf="@+id/caloriesBurned"
+            app:layout_constraintStart_toStartOf="@+id/workoutMin"
+            app:layout_constraintTop_toTopOf="@+id/workoutNum" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/workoutMin"
             style="@style/workoutValues"
             android:layout_width="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="48dp"
             android:text="350"
-            app:layout_constraintEnd_toStartOf="@+id/textView18"
+            app:layout_constraintEnd_toStartOf="@+id/workoutNum"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/userName" />
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/workoutNum"
             style="@style/workoutValues"
             android:layout_width="0dp"
             android:text="5"
-            app:layout_constraintEnd_toStartOf="@+id/textView19"
+            app:layout_constraintEnd_toStartOf="@+id/caloriesBurned"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toTopOf="@+id/textView17" />
+            app:layout_constraintStart_toEndOf="@+id/workoutMin"
+            app:layout_constraintTop_toTopOf="@+id/workoutMin" />
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/caloriesBurned"
             style="@style/workoutValues"
             android:layout_width="0dp"
             android:layout_marginEnd="8dp"
             android:text="155"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toTopOf="@+id/textView18" />
+            app:layout_constraintStart_toEndOf="@+id/workoutNum"
+            app:layout_constraintTop_toTopOf="@+id/workoutNum" />
 
         <TextView
             android:id="@+id/textView20"
@@ -99,7 +99,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="@+id/view2"
-            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+            app:layout_constraintTop_toBottomOf="@+id/workoutMin" />
 
         <TextView
             android:id="@+id/textView21"
@@ -110,7 +110,7 @@
             app:layout_constraintEnd_toStartOf="@+id/textView22"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textView20"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+            app:layout_constraintTop_toBottomOf="@+id/workoutNum" />
 
         <TextView
             android:id="@+id/textView22"
@@ -119,10 +119,10 @@
             android:layout_marginEnd="8dp"
             android:paddingBottom="8dp"
             android:text="CALORIES BURNED"
-            app:layout_constraintEnd_toEndOf="@+id/textView19"
+            app:layout_constraintEnd_toEndOf="@+id/caloriesBurned"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textView21"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+            app:layout_constraintTop_toBottomOf="@+id/caloriesBurned" />
 
         <include
             android:id="@+id/includeTimer"

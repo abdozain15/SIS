@@ -10,8 +10,7 @@ import androidx.fragment.app.activityViewModels
 import com.sedra.sis.R
 import com.sedra.sis.data.model.User
 import com.sedra.sis.databinding.FragmentHomeBinding
-import com.sedra.sis.util.PREF_PARENT_USER
-import com.sedra.sis.util.getUserFromString
+import com.sedra.sis.util.*
 import com.sedra.sis.view.cart.CartActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
@@ -52,7 +51,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             wasRunning = savedInstanceState
                 .getBoolean("wasRunning");
         }
-        runTimer();
+        runTimer()
         binding?.apply {
             includeTimer.playTimer.setOnClickListener {
                 onClickStart()
@@ -66,15 +65,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             goToCart.setOnClickListener {
                 startActivity(Intent(requireContext(), CartActivity::class.java))
             }
+            workoutNum.text = preferences.getInt(PREF_WORKOUT_NUMBER, 0).toString()
+            workoutMin.text = preferences.getInt(PREF_WORKOUT_MINS, 0).toString()
+            caloriesBurned.text = preferences.getLong(PREF_BURNED_CAL, 0).toString()
         }
-    }
-
-    private fun stopCounter() {
-
-    }
-
-    private fun startCounter() {
-
     }
 
 

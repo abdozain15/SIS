@@ -15,6 +15,7 @@
         android:icon="@drawable/ic_home" />
     <item
         android:id="@+id/workoutFragment"
+        android:icon="@drawable/workout_image"
         android:title="Workout" />
 
     <item

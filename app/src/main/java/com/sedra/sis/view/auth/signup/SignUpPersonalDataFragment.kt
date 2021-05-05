@@ -20,13 +20,22 @@ class SignUpPersonalDataFragment : Fragment(R.layout.fragment_sign_up_personal_d
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSignUpPersonalDataBinding.bind(view)
         binding?.apply {
+            man.setOnClickListener {
+                viewModel.gender = "male"
+                man.setBackgroundResource(R.drawable.shape_stroke)
+                woman.setBackgroundColor(resources.getColor(android.R.color.transparent))
+            }
+            woman.setOnClickListener {
+                viewModel.gender = "female"
+                man.setBackgroundColor(resources.getColor(android.R.color.transparent))
+                woman.setBackgroundResource(R.drawable.shape_stroke)
+            }
             nextSignUp.setOnClickListener {
                 saveDataToViewModel(
                     registerName.text.toString(),
                     registerAge.text.toString(),
                     registerHeight.text.toString(),
-                    registerWeight.text.toString(),
-                    "female"
+                    registerWeight.text.toString()
                 )
                 findNavController().navigate(R.id.action_signUpPersonalDataFragment_to_signUpLoginDataFragment)
             }
@@ -38,12 +47,10 @@ class SignUpPersonalDataFragment : Fragment(R.layout.fragment_sign_up_personal_d
         age: String,
         height: String,
         weight: String,
-        gender: String
     ) {
         viewModel.age = age.toInt()
         viewModel.name = name
         viewModel.height = height.toInt()
         viewModel.weight = weight.toInt()
-        viewModel.gender = gender
     }
 }

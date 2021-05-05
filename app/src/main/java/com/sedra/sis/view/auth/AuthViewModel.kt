@@ -17,7 +17,7 @@ class AuthViewModel @Inject constructor(
     var age = 0
     var height = 0
     var weight = 0
-    var gender = ""
+    var gender = "male"
 
     fun login(email: String, password: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))

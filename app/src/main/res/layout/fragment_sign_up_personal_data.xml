@@ -55,6 +55,35 @@
                     style="@style/signUpHeaders"
                     android:text="select gender" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <ImageView
+                        android:id="@+id/man"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/shape_stroke"
+                        android:padding="2dp"
+                        app:srcCompat="@drawable/man" />
+
+                    <ImageView
+                        android:id="@+id/woman"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:padding="2dp"
+                        app:srcCompat="@drawable/woman" />
+                </LinearLayout>
+
                 <TextView
                     android:id="@+id/textView8"
                     style="@style/signUpHeaders"
@@ -120,6 +149,7 @@
                     android:text="NEXT"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
+
             </LinearLayout>
         </ScrollView>
 

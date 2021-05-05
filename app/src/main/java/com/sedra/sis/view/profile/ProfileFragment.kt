@@ -128,6 +128,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun openEditDialog() {
+        var currentGender = currentUser?.gender ?: "male"
         val binding: DialogEditProfileBinding = DataBindingUtil.inflate(
             LayoutInflater.from(
                 context
@@ -140,13 +141,32 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
         binding.apply {
             user = currentUser
+            if (currentGender == "male") {
+                man.setBackgroundResource(R.drawable.shape_stroke)
+                woman.setBackgroundColor(resources.getColor(android.R.color.transparent))
+
+            } else {
+                man.setBackgroundColor(resources.getColor(android.R.color.transparent))
+                woman.setBackgroundResource(R.drawable.shape_stroke)
+            }
+            man.setOnClickListener {
+                currentGender = "male"
+                man.setBackgroundResource(R.drawable.shape_stroke)
+                woman.setBackgroundColor(resources.getColor(android.R.color.transparent))
+
+            }
+            woman.setOnClickListener {
+                currentGender = "female"
+                man.setBackgroundColor(resources.getColor(android.R.color.transparent))
+                woman.setBackgroundResource(R.drawable.shape_stroke)
+            }
             saveData.setOnClickListener {
                 saveUserData(
                     registerName.text.toString(),
                     registerAge.text.toString(),
                     registerHeight.text.toString(),
                     registerWeight.text.toString(),
-                    "female"
+                    currentGender
                 )
                 dialog.dismiss()
             }
