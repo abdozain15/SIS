@@ -60,7 +60,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun login(email: String, password: String) {
-        viewModel.login("jh123u@gmail.com", "123456789").observe(viewLifecycleOwner) {
+        viewModel.login(email, password).observe(viewLifecycleOwner) {
             it?.let { resource ->
                 when (resource.status) {
                     SUCCESS -> {

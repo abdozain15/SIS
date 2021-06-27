@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.sedra.sis.R
@@ -68,6 +69,33 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             workoutNum.text = preferences.getInt(PREF_WORKOUT_NUMBER, 0).toString()
             workoutMin.text = preferences.getInt(PREF_WORKOUT_MINS, 0).toString()
             caloriesBurned.text = preferences.getLong(PREF_BURNED_CAL, 0).toString()
+            sendQuestion.setOnClickListener {
+                askQuestion(questionText.text.toString())
+            }
+        }
+        showBestScore(preferences.getInt(PREF_BEST_SCORE, 0))
+    }
+
+    private fun askQuestion(question: String) {
+        viewModel.askQuestion(
+            "Bearer ${user?.api_token}",
+            user?.id ?: 0,
+            question
+        ).observe(viewLifecycleOwner) {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        Toast.makeText(context, "Message sent", Toast.LENGTH_SHORT).show()
+                        binding?.questionText?.setText("")
+                    }
+                    Status.ERROR -> {
+                        Toast.makeText(context, "Please, Enter password", Toast.LENGTH_SHORT).show()
+                    }
+                    Status.LOADING -> {
+                        Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 
@@ -100,13 +128,23 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         running = true;
     }
 
-    fun onClickStop() {
-        running = false;
-        seconds = 0;
+    private fun onClickStop() {
+        if (preferences.getLong(PREF_BEST_SCORE, 0) < seconds) {
+            saveBestScore(seconds)
+            showBestScore(seconds)
+        }
+        running = false
+        seconds = 0
+    }
+
+    private fun saveBestScore(seconds: Int) {
+        val editor = preferences.edit()
+        editor.putInt(PREF_BEST_SCORE, seconds)
+        editor.apply()
     }
 
     fun onCLickPause() {
-        running = false;
+        running = false
     }
 
 
@@ -122,7 +160,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     Locale.getDefault(),
                     "%d:%02d:%02d", hours,
                     minutes, secs
-                );
+                )
                 binding?.includeTimer?.timeView?.text = time
                 if (running) {
                     seconds++
@@ -134,6 +172,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     }
 
+
+    fun showBestScore(sec: Int) {
+        val hours = sec / 3600
+        val minutes = (sec % 3600) / 60
+        val secs = sec % 60
+        val time = String.format(
+            Locale.getDefault(),
+            "%d:%02d:%02d", hours,
+            minutes, secs
+        )
+        binding?.includeTimer?.bestScore?.text = "BEST SCORE: $time"
+    }
 
     override fun onDestroy() {
         binding = null

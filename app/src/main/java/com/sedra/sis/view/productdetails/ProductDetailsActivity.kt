@@ -38,6 +38,12 @@ class ProductDetailsActivity : AppCompatActivity() {
             increaseQuantity.setOnClickListener {
                 quantity++
                 increaseQuantity.text = "QUN\n$quantity"
+                decreaseQuantity.text = "QUN\n$quantity"
+            }
+            decreaseQuantity.setOnClickListener {
+                if (quantity > 0)quantity--
+                increaseQuantity.text = "QUN\n$quantity"
+                decreaseQuantity.text = "QUN\n$quantity"
             }
             addToCart.setOnClickListener {
                 if (Cart.hashMap.contains(currentProduct)) {
@@ -47,7 +53,7 @@ class ProductDetailsActivity : AppCompatActivity() {
                 }
                 quantity = 1
                 increaseQuantity.text = "QUN\n$quantity"
-
+                decreaseQuantity.text = "QUN\n$quantity"
             }
         }
     }
